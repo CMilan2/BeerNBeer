@@ -7,6 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :beers
+  has_many :orders
+
   validates :first_name, :last_name, :role, :birth_date, presence: true
   validates :role, inclusion: { in: ROLES }
 end

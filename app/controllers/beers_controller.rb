@@ -7,6 +7,7 @@ class BeersController < ApplicationController
 
   def show
     @beer = Beer.find(params[:id])
+    @order = Order.new
   end
 
   def new

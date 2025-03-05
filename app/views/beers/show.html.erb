@@ -19,14 +19,22 @@
         <p class="card-text"><strong>Description</strong> : <%= @beer.description %></p>
 
         <!-- Compteur de quantité -->
-        <div class="d-flex align-items-center my-3" data-controller="quantity" data-name="<%= @beer.name %>">
-          <button class="btn btn-white btn-lg text-dark custom-btn" type="button" data-action="click->quantity#decrement">-</button>
+        <%# <div class="d-flex align-items-center my-3" data-controller="quantity" data-name="= @beer.name"> %>
+          <%# <button class="btn btn-white btn-lg text-dark custom-btn" type="button" data-action="click->quantity#decrement">-</button>
           <input class="form-control text-center bg-white" style="width: 100px;" data-quantity-target="quantity" value="1" min="1">
           <button class="btn btn-white btn-lg text-dark custom-btn" type="button" data-action="click->quantity#increment">+</button>
-        </div>
+        </div> %>
 
         <!-- Bouton Ajouter au panier -->
-        <button class="btn btn-danger btn-lg text-white custom-btn" onclick="addToCart()">Ajouter au panier</button>
+        <%# <button class="btn btn-danger btn-lg text-white custom-btn" onclick="addToCart()">Ajouter au panier</button> %>
+
+        <%= simple_form_for @order do |f|%>
+          <%= f.input :quantity %>
+          <%= f.button :submit, class: "btn btn-danger btn-lg text-white custom-btn" %>
+        <% end %>
+
+
+
       </div>
     </div>
   </div>
