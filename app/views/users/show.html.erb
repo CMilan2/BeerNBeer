@@ -22,19 +22,23 @@
         <% @user.beers.each do |beer| %>
         <div class="col">
 
-          <div class="card p-2 bg-white rounded-4">
-            <p class="card-title text-secondary fs-4 color-secondary p-3 position-absolute top-0"><%= beer.centiliter %>cl</p>
-            <%= cl_image_tag beer.photo.key, width: 300, class: "img-fluid w-100 bg-white card-img-top object-fit-cover"%>
+          <div class="card p-3 bg-white rounded-4">
+            <p class="badge text-bg-light card-title text-secondary fs-6 p-3 position-absolute top-5"><%= beer.centiliter %>cl</p>
+            <%# <button type="button" class="btn-close" aria-label="Close"></button> %>
+            <%= link_to "", beer_path(beer), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn-close position-absolute mt-16 mr-20" %>
+
+            <div class="d-flex align-items-center" style="height: 300px;">
+              <%= cl_image_tag beer.photo.key, class: "w-100 h-100 bg-white p-3 card-img-top object-fit-contain"%>
+            </div>
+
             <div class="card-body bg-white d-flex flex-column gap-3">
               <p class="card-title fs-3 mb-0"><%= beer.unit_price %> €</p>
               <h5 class="card-title fs-5 mb-0 fw-medium text-uppercase"><%= beer.name %></h5>
               <div class="d-flex flex-row gap-3">
-                <%= link_to "Update", beer_path(beer), class: "btn btn-outline-primary w-100 mt-3 p-3 px-5 rounded-3" %>
-                <%= link_to "Delete", beer_path(beer), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-outline-danger w-100 mt-3 p-3 px-5 rounded-3" %>
+                <%= link_to "Update", edit_beer_path(beer), class: "btn btn-outline-primary w-100 mt-3 p-3 px-5 rounded-3" %>
               </div>
             </div>
           </div>
-
 
         </div>
         <% end %>
