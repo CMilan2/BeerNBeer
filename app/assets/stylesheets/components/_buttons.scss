@@ -1,0 +1,71 @@
+.cus-out-btn-primary {
+	color: #faf7f0;
+	background-color: $primary;
+	border-color: rgba(36, 89, 73, 1);
+}
+
+.cus-out-btn-primary:hover {
+	color: #faf7f0;
+	background-color: rgba(36, 89, 73, 1);
+	border-color: rgba(36, 89, 73, 1);
+}
+
+.cus-out-btn-primary:focus,
+.cus-out-btn-primary.focus {
+	box-shadow: 0 0 0 0rem rgba(36, 89, 73, 1);
+}
+
+.cus-out-btn-primary:disabled,
+.cus-out-btn-primary.disabled {
+	color: #6c757d;
+	background-color: $primary;
+	border-color: $primary;
+}
+
+.cus-btn-primary {
+	color: #faf7f0;
+	background-color: $primary;
+	border-color: $primary;
+}
+
+.cus-btn-primary:hover {
+	color: #faf7f0;
+	background-color: rgba(36, 89, 73, 1);
+	border-color: rgba(36, 89, 73, 1);
+}
+
+.cus-btn-primary:focus,
+.cus-btn-primary.focus {
+	box-shadow: 0 0 0 0rem rgba(36, 89, 73, 1);
+}
+
+.cus-btn-primary:disabled,
+.cus-btn-primary.disabled {
+	color: #6c757d;
+	background-color: $primary;
+	border-color: $primary;
+}
+
+.cus-btn-primary-light {
+	color: #faf7f0;
+	background-color: rgba(36, 89, 73, 1);
+	border-color: rgba(36, 89, 73, 1);
+}
+
+.cus-btn-primary-light:hover {
+	color: $primary;
+	background-color: #faf7f0;
+	border-color: #faf7f0;
+}
+
+.cus-btn-primary-light:focus,
+.cus-btn-primary-light.focus {
+	box-shadow: 0 0 0 0rem #faf7f0;
+}
+
+.cus-btn-primary-light:disabled,
+.cus-btn-primary-light.disabled {
+	color: #6c757d;
+	background-color: rgba(36, 89, 73, 1);
+	border-color: rgba(36, 89, 73, 1);
+}

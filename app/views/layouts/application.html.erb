@@ -1,84 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BeerNBeer</title>
+    <title>Beer&Beer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-
-    <style>
-      body {
-        height: auto;
-        margin: 0;
-        overflow-x: hidden;
-      }
-
-      #ocean {
-        position: absolute;
-        width: 100%;
-        min-height: 100%;
-        z-index: -1;
-        background-image: linear-gradient(to top, rgb(254, 194, 2) 0%, rgb(255, 255, 255) 50%);
-      }
-
-      .wave {
-        background:rgb(255, 255, 255);
-        display: inline-block;
-        height: 60%;
-        width: 10px;
-        position: absolute;
-        animation: dostuff 3s infinite ease-in-out;
-      }
-
-      @keyframes dostuff {
-        0% { height: 60%; }
-        50% { height: 40%; }
-        100% { height: 60%; }
-      }
-    </style>
   </head>
 
   <body>
-    <div id="ocean"></div>
-    <%= render "shared/navbar" %>
+    <%#= debug controller_name %>
+    <%#= debug action_name %>
+    <%#= debug request.path %>
+
+    <% if request.path.start_with?("/users") %>
+      <%= render "shared/dark_navbar", class: "index-9" %>
+    <% else %>
+      <%= render "shared/navbar", class: "index-9" %>
+    <% end %>
+
+    <%#= render "shared/navbar", class:"index-9" %>
     <%= render "shared/flashes" %>
 
     <%= yield %>
-    <style>
-      body {
-      background-color:rgb(254, 194, 2); /* Change this to your desired background color */
-      }
-    </style>
 
-    <%= render 'shared/footer' %>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        console.log("ocean.js running inside application.html.erb");
-
-        var ocean = document.getElementById("ocean");
-        if (!ocean) return;
-
-        var waveWidth = 10,
-            waveCount = Math.floor(window.innerWidth / waveWidth),
-            docFrag = document.createDocumentFragment();
-
-        for (var i = 0; i < waveCount; i++) {
-          var wave = document.createElement("div");
-          wave.classList.add("wave");
-          wave.style.left = i * waveWidth + "px";
-          wave.style.animationDelay = (i / 100) + "s";
-
-          console.log(`Appending wave ${i} at left: ${i * waveWidth}px`); // Debugging line
-
-          docFrag.appendChild(wave);
-        }
-
-        ocean.appendChild(docFrag);
-      });
-    </script>
+    <%#= render 'shared/footer' %>
   </body>
 </html>

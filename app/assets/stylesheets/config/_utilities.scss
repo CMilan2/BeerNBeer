@@ -1,0 +1,64 @@
+.ratio {
+	aspect-ratio: 1/1;
+}
+
+.index-9 {
+	z-index: 99 !important;
+}
+
+.blend {
+	mix-blend-mode: multiply;
+}
+
+.cover {
+	object-fit: cover;
+}
+
+.contain {
+	object-fit: contain;
+}
+
+.primary {
+	color: $primary !important;
+}
+
+.white {
+	color: #faf7f0;
+}
+.w-70 {
+	width: 70%;
+}
+
+.bg-principal {
+	background-color: #faf7f0;
+}
+
+.bg-primary {
+	background-color: $primary;
+}
+
+.bg-primary-dark {
+	background-color: #0f1d18;
+}
+
+.neg-marg {
+	margin-top: -100px;
+}
+
+.absolute {
+	position: absolute;
+	top: 4rem !important;
+	left: 4rem !important;
+}
+
+.primary-color {
+	color: rgba(36, 89, 73, 1);
+}
+
+.span-1 {
+	grid-column: span 1;
+}
+
+.pt-l {
+	padding-top: 10rem;
+}

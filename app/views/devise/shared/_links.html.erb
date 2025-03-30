@@ -1,9 +1,9 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name), class:"btn btn-outline-success w-100 text-align-center mt-1 mb-3" %><br />
+  <%= link_to "Log in", new_session_path(resource_name), class:"btn cus-out-btn-primary py-1 w-100 rounded-4 mt-1" %><br />
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name), class:"btn btn-outline-warning w-100 text-align-center mt-1" %><br />
+  <%= link_to "Forgot your password?", new_password_path(resource_name), class:"btn btn-outline-warning w-100 text-align-center py-1 mt-1 rounded-4" %><br />
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>

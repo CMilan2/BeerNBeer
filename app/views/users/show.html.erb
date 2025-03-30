@@ -1,52 +1,42 @@
-<div class="d-flex flex-column justify-content-end">
-  <img class="img-fluid banner-image w-100 object-fit-cover align-self-end" src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="beer image background" style="height: 450px;">
-</div>
-
-<div class="container mb-5 margin-top">
-
-  <div class="d-flex gap-3">
-
-    <div class="d-flex flex-column gap-5 p-8 bg-white rounded-5 py-5 align-self-start col-3 sticky-profil">
-      <div class="d-flex justify-content-center">
-        <img class="object-fit-cover rounded-circle" src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" width="200" height="200">
-      </div>
-
-      <div class="mb-4 text-center">
-        <h1 class="mb-2"><strong><%= @user.first_name %> <%= @user.last_name %></strong></h1>
-        <p class="mb-2"><strong>Email:</strong> <%= @user.email %></p>
-        <p class="mb-2"><strong>Birth date:</strong> <%= @user.birth_date %></p>
-        <%= link_to "Add a new beer", new_beer_path, class:"btn btn-primary mt-4 p-3 px-5 rounded-3" %>
-      </div>
+<div class="d-flex flex-column align-items-center bg-principal min-100vh pb-5">
+  <div class="container-fluid bg-principal gap-5 sticky-top pb-2 pt-l z-index-0">
+    <div class="container gap-2">
+      <h1 class="d-flex primary bebas text-uppercase align-items-baseline">
+        My show room
+        <span class="px-1 s">
+          / <%= @user.beers.count %> beers
+        </span>
+        <%= link_to "Add a new beer", new_beer_path, class:"btn cus-btn-primary rounded-4 py-1 px-2 s mx-2" %>
+      </h1>
     </div>
-
-    <div class="d-flex flex-column flex-grow-1 flex-wrap gap-5 p-5 bg-white rounded-5">
-      <h1 class="fw-medium fs-1 w-100 border-bottom pb-4 text-uppercase">My show room (<%= @user.beers.count %>)</h1>
-
-      <div class="row row-cols-1 row-gap-5 row-cols-md-2">
-        <% @user.beers.each do |beer| %>
-        <div class="col">
-
-        <div class="card p-3 bg-white rounded-4 overflow-hidden">
-          <p class="badge text-bg-light card-title text-secondary fs-6 p-3 position-absolute top-5"><%= beer.centiliter %>cl</p>
-          <%= link_to "", beer_path(beer), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "z-2 btn-close close-button" %>
-
-          <div class="d-flex align-items-center hovereffect z-0" style="height: 250px;">
-            <%= cl_image_tag beer.photo.key, class: "w-100 h-100 bg-white p-3 card-img-top object-fit-contain"%>
+  </div>
+  <div class="container">
+    <div class="beer-grid gap-2 mt-3 position-relative">
+      <% @user.beers.each do |beer| %>
+        <div class="profil-card position-relative">
+          <div class="bg-principal blend overflow-hidden rounded-4">
+            <%= cl_image_tag beer.photo.key,  style: "width: 100%; height: 500px;",
+                                              class: "img-fluid hover-scale contain p-4"
+                                              %>
           </div>
 
-          <div class="card-body bg-white d-flex flex-column gap-3">
-            <p class="card-title fs-3 mb-0"><%= beer.unit_price %> €</p>
-            <h5 class="card-title fs-3 mb-0 fw-medium text-uppercase"><%= beer.name %></h5>
-            <div class="d-flex flex-row gap-3">
-              <%= link_to "Update", edit_beer_path(beer), class: "btn btn-outline-primary w-100 mt-3 p-3 px-5 rounded-3" %>
+          <div class="mt-2 primary-color">
+            <h5 class="s mb-0 bebas text-uppercase"><%= beer.name %></h5>
+            <p class="s"><%= beer.unit_price %> €</p>
+            <div class="d-flex flex-column gap-1 top-left">
+              <%= link_to edit_beer_path(beer), class: "index-9 icon-circle" do %>
+                <i class="fa-solid fa-pen white"></i>
+              <% end %>
+
+              <%= link_to beer_path(beer),
+                          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                          class: "index-9 icon-circle" do %>
+                <i class="fa-solid fa-trash white"></i>
+              <% end %>
             </div>
           </div>
         </div>
-
-        </div>
-        <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
-
 </div>

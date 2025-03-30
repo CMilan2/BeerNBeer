@@ -1,0 +1,24 @@
+<header class="d-flex justify-content-between py-2 position-fixed bg-none w-100 px-2 index-9" >
+  <h3><%= link_to "BrewUp", root_path, class:"bebas text-uppercase fw-bold dark-nav-link text-decoration-none primary" %></h3>
+
+  <ul class="d-flex gap-2">
+    <li class="list-unstyled">
+      <%= link_to 'Brewery', beers_path(anchor: 'targetSection'), class: "dark-nav-link s text-decoration-none primary" %>
+    </li>
+    <li class="list-unstyled">
+      <%= link_to 'Beers', beers_path(anchor: 'targetSection'), { class: "dark-nav-link s text-decoration-none primary" } %>
+    </li>
+
+    <% if user_signed_in? %>
+      <li class="list-unstyled d-flex gap-2 align-items-center">
+        <%= link_to "Profile", user_path(current_user), { class:"dark-nav-link s text-decoration-none primary" } %>
+        <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class:"dark-nav-link s text-decoration-none primary" %>
+      </li>
+    <% else %>
+      <li class="list-unstyled d-flex gap-2 align-items-center">
+        <%= link_to "Sign Up", new_user_registration_path, { class: "dark-nav-link s text-decoration-none primary" } %>
+        <%= link_to "Login", new_user_session_path, { class: "dark-nav-link s text-decoration-none primary" } %>
+      </li>
+    <% end %>
+  </ul>
+</header>

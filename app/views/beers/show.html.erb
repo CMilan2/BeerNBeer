@@ -1,68 +1,64 @@
-<div class="container-fluid vh-100 bg-white">
-  <div class="h-75 w-75 d-flex flex-row bg-white container-fluid vh-100 d-flex justify-content-center align-items-center">
-    <!-- Image à gauche -->
-    <div class="col-md-6 text-center">
-      <%= cl_image_tag @beer.photo.key, width: 400, class: "img-fluid h-100 rounded-start object-fit-contain"%>
+<div class="w-100">
+  <div class="w-100 vh-100 d-flex">
+    <div class="w-50 bg-principal overflow-hidden position-relative">
+      <div class="absolute index-9">
+        <%= render "shared/back" %>
+      </div>
+      <%= image_tag "product-1.png", style: "width: 100%; height: 100vh;", class: "blend hover-scale contain p-4" %>
     </div>
 
-    <!-- Texte à droite -->
-    <div class="col-md-6 flex-column d-flex flex-column justify-content-between text-start p-4">
-      <div class="card-body">
-        <%= render "shared/back" %>
-        <h1 class="card-title"><strong><%= @beer.name %></strong></h1>
-        <p class="card-text text-muted fs-3">Unit Price : <%= @beer.unit_price %>€</p>
-        <h4 class="card-text">Beer's type : <%= @beer.beer_type %></h4>
-        <h5 class="card-text">Packaging : <%= @beer.conditionnement %></h5>
-        <h5 class="card-text"><%= @beer.centiliter %> cl</h5>
-        <p class="card-text"><strong>Description</strong> : <%= @beer.description %></p>
 
-        <%#####= simple_form_for @order, html: { data: { controller: "price", "unit-price-value": @beer.unit_price } } do |f| %>
-          <%####= f.input :quantity, input_html: {
-                data: { target: "price.quantity", action: "input->price#update" }
-              } %>
-          <%###= f.hidden_field :beer_id, value: @beer.id %>
-          <%##= f.button :submit,
-              value: "Acheter pour #{@beer.unit_price}€",
-              class: "btn btn-danger btn-lg text-white custom-btn",
-              data: { target: "price.button" } %>
-        <%# end %>
+    <div class="w-50 d-flex flex-column justify-content-center">
+      <div class="p-5">
+
+        <h1 class="bebas l text-uppercase">
+          <strong><%= @beer.name %></strong>
+        </h1>
+
+        <div class="s d-flex gap-2 my-2">
+          <p><strong>Unit Price :</strong> <%= @beer.unit_price %>€</p> |
+          <p><%= @beer.centiliter %> cl</p>
+        </div>
+
+        <p>
+          <strong class="s">Description :</strong> <%= @beer.description %>
+        </p>
 
 
-<%= simple_form_for @order, html: { data: { controller: "quantity", "unit-price-value": @beer.unit_price } } do |f| %>
-          <div class="d-flex align-items-center">
+        <%= simple_form_for @order, html: { data: { controller: "quantity", "unit-price-value": @beer.unit_price } } do |f| %>
+        <p class="mt-4 s">
+          <strong>Quantity</strong>
+        </p>
 
-            <button class="btn btn-white btn-lg text-dark custom-btn"
+          <div class="d-flex align-items-end gap-1 w-50">
+            <button class="btn btn-rounded-quantity p-1 rounded-circle ratio"
                     type="button"
-                    data-action="click->quantity#decrement">
-              -
+                    data-action="click->quantity#decrement">-
             </button>
-
-            <%= f.input :quantity,
-                input_html: {
-                  data: { target: "price.quantity", action: "input->quantity#update" },
-                  class: 'form-control text-center bg-white mx-2 desactivation',
-                  style: 'width: 100px;',
-                  'data-quantity-target': 'quantity',
-                  value: 1, min: 1
-                }
+            <%# <:quantity> %>
+            <%= f.input :"",
+              input_html: {
+                data: { target: "price.quantity", action: "input->quantity#update" },
+                class: 'py-1 text-center desactivation',
+                style: 'width: 100%;',
+                'data-quantity-target': 'quantity',
+                value: 1, min: 1
+              }
             %>
 
-            <button class="btn btn-white btn-lg text-dark custom-btn"
+            <button class="btn btn-rounded-quantity p-1 rounded-circle ratio"
                     type="button"
-                    data-action="click->quantity#increment">
-              +
+                    data-action="click->quantity#increment">+
             </button>
-
           </div>
+
           <%= f.hidden_field :beer_id, value: @beer.id %>
           <%= f.button :submit,
               value: "Buy (#{@beer.unit_price})€",
-              class: "btn btn-danger btn-lg text-white custom-btn",
-              data: { target: "quantity.button" } %>
+              class: "btn cus-btn-primary-light py-1 w-100 rounded-4 mt-3",
+              data: { target: "quantity.button" }
+          %>
         <% end %>
-
-        <!-- Bouton Ajouter au panier -->
-        <%# <%= link_to "ajoutez au panier", new_beer_order_path(@beer),  class:"btn btn-danger btn-lg text-white custom-btn" %>
       </div>
     </div>
   </div>

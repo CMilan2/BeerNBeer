@@ -1,32 +1,99 @@
-<div class="container mt-3">
-  <h1>All beers</h1>
-  <div class="row justify-content-center">
-    <div class="col-sm-8 my-3">
-      <%= form_with url: beers_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Search a specific beer ? 🍻"
-          %>
-        <%= submit_tag "Cheers! 🍺", name: "", class: "btn btn-danger me-3" %>
-      <% end %>
-    </div>
+<section  class="hero-background"
+      style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(22, 50, 44, 1)),
+      url('<%= image_path "hero.jpg", height: 200, width: 200, crop: "fit" %>')">
+  <div class="h-100 justify-content-center d-flex flex-column">
+    <h1 class="bebas xxl text-center">TASTE.<br>MEET. ENJOY</h1>
   </div>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <% @beers.each do |beer| %>
-    <div class="col">
-      <div class="card mb-3">
-        <%= cl_image_tag beer.photo.key, width: 400, height: 400, class: " bg-white p-5 card-img-top object-fit-contain"%>
-        <div class="card-body bg-white">
-          <h5 class="card-title"> <%= beer.name %> </h5>
-          <p class="card-title"> <em><%= beer.centiliter %>cl</em></p>
-            <div class="d-flex justify-content-between align-items-center">
-            <p class="card-title mb-0 fs-4"><b><%= beer.unit_price %> €</b></p>
-            <%= link_to "See more", beer_path(beer), class: "btn btn-outline-primary" %>
-            </div>
+
+  <div class="container-fluid neg-marg mb-5">
+    <div class="container d-flex gap-2 justify-content-center">
+
+      <div class="card-nav bg-primary-dark p-3 rounded-4 w-50 d-flex flex-column justify-content-between">
+        <h3 class="bebas l text-uppercase text-white">BREWUP</h3>
+        <div class="d-flex justify-content-between align-items-end white">
+          <p class="text-white w-70 pt-5">Our goal is to find a common language between people with the help of beer.</p>
+          <i class="arrow fa-solid fa-arrow-right m"></i>
         </div>
       </div>
+
+      <%= link_to '#targetSection', { class: "text-decoration-none h-auto card-nav bg-primary-dark p-3 rounded-4 w-50" } do %>
+        <h3 class="bebas l text-uppercase white">BEER SHOP</h3>
+        <div class="d-flex justify-content-between align-items-end white">
+          <p class="white w-70 pt-5">There are no such situations where you cannot find common communications. You just need to choose the right type of beer for conversation.</p>
+          <i class="arrow fa-solid fa-arrow-right m"></i>
+        </div>
+      <% end %>
+
     </div>
-    <% end %>
   </div>
-</div>
+
+  <section class="container-fluid px-2 bg-primary pt-5">
+
+    <div class="row">
+      <div class="container title w-100 text-center">
+        <h6 class="text-uppercase opacity-50 s mb-2">About</h6>
+        <h1 class="bebas xl text-uppercase">Us We don't brew beer,<br>we brew communications</h1>
+      </div>
+
+      <div class="col-12 col-md-4 col-lg-4 my-5">
+        <%= image_tag "cuve-1.jpg", style: "width: 100%; height: 110vh", class:"cover" %>
+      </div>
+
+      <div class="col-12 col-md-4 col-lg-4 d-flex flex-column justify-content-start my-5">
+        <%= image_tag "cuve-2.jpg", style: "width: 70%; height: 50vh", class:"cover" %>
+
+        <p class="mt-2" style="width: 70%">Our goal is to become a stimulus for communication and a driver of beer culture in our hometown. To do this, we help different people find a common language, giving them an incentive to get closer and get to know each other.</p>
+      </div>
+
+      <div class="col-12 col-md-4 col-lg-4 d-flex flex-column justify-content-between my-5 align-items-end">
+        <div class="d-flex flex-column gap-3">
+          <p>BREWUP is a team that built an entire project around the idea of ​​becoming something more than just a brewery. We also organize annual festivals and conduct educational projects in Ukrainian institutions and bartending schools, telling about the history in the beer museum of our city.</p>
+          <%= link_to "See more", beers_path, class:"btn cus-out-btn-primary py-2 w-100 rounded-4" %>
+        </div>
+
+        <%= image_tag "beer-houblon.avif", style: "width: 70%; height: auto", class:"cover" %>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="container-fluid justify-content-center align-items-center d-flex flex-column py-5 bg-principal" id="targetSection">
+    <h2 class="bebas display text-center primary-color">ALL BEERS</h2>
+    <div class="w-100 pb-5">
+      <%= form_with url: beers_path, method: :get, class: "d-flex container w-50 mt-3" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control p-1 bg-none",
+          placeholder: "Search a specific beer ?"
+          %>
+        <%= submit_tag "Search", name: "", class:"btn cus-btn-primary px-3" %>
+      <% end %>
+    </div>
+    <div class="container row">
+      <% @beers.each do |beer| %>
+      <div class="col-12 col-md-4 col-lg-4 flex-grow-1">
+
+        <div class="w-100 mb-2">
+          <p class="position-absolute top-5 left-5"><em><%= beer.centiliter %>cl</em></p>
+          <div class="bg-principal blend overflow-hidden position-relative rounded-4">
+            <%= link_to beer_path(beer) do %>
+              <%= image_tag "product-1.png", style: "width: 100%; height: 500px;", class: "img-fluid blend hover-scale contain p-4" %>
+            <% end %>
+          </div>
+          <div class="mt-2 primary-color">
+            <h5 class="s mb-0 bebas text-uppercase">
+              <%= beer.name %>
+            </h5>
+            <div>
+              <p class="s">
+                <%= beer.unit_price %> €
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <% end %>
+    </div>
+  </section>
+</section>

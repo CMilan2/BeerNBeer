@@ -1,0 +1,56 @@
+.beer-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.min-100vh {
+	min-height: 100vh;
+}
+
+.sticky-top {
+	position: sticky;
+	top: 0;
+	z-index: 80;
+}
+
+.profil-card {
+	.top-left {
+		position: absolute;
+		top: 1rem;
+		left: 1rem;
+
+		.icon-circle {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			background-color: $primary;
+			border: solid 1px $primary;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 50 !important;
+			opacity: 0;
+			transition: background-color 0.3s, border-color 0.3s, color 0.5s ease-in-out;
+
+			i {
+				color: #faf7f0;
+				transition: color 0.3s;
+			}
+
+			&:hover {
+				background-color: #faf7f0;
+				border: solid 1px #faf7f0;
+
+				i {
+					color: $primary;
+				}
+			}
+		}
+	}
+
+	&:hover {
+		.icon-circle {
+			opacity: 1;
+		}
+	}
+}

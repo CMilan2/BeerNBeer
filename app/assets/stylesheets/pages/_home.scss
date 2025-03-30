@@ -1,0 +1,52 @@
+.hero-background {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: bottom;
+	height: 100vh;
+
+	.card-nav {
+		z-index: 0;
+		transform: translateX(0);
+		transition: transform 0.5s ease-in-out;
+
+		&:hover .arrow {
+			transition: transform 0.5s ease-in-out;
+			transform: translateX(10px);
+		}
+	}
+
+	.form-control {
+		background-color: transparent !important;
+
+		&::placeholder {
+			color: $primary;
+		}
+
+		&:focus {
+			outline: none;
+			box-shadow: 0 0 0px rgba(36, 89, 73, 0);
+		}
+
+		&:not(:placeholder-shown) {
+			background-color: rgba(36, 89, 73, 1);
+			color: $primary;
+		}
+	}
+}
+
+.animate {
+	transform: translateY(0);
+	transition: transform 0.3s ease;
+
+	&:hover {
+		transform: translateY(100px);
+	}
+}
+
+.hover-scale {
+	transition: transform 0.5s ease-in-out;
+
+	&:hover {
+		transform: scale(1.07) rotate(15deg);
+	}
+}

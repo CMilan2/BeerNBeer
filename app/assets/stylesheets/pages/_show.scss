@@ -1,24 +1,35 @@
-
-@import "home";
-
-.custom-btn {
-  width: 100%;
-  border-radius: 10px;
+.order_ {
+	margin-bottom: 0 !important;
 }
 
-.quantity-btn {
-  background-color: white;
-  border: 1px solidrgb(255, 255, 255);
-  font-size: 1.5rem;
-  font-weight: bold;
+.quantity-height {
+	height: 50px;
 }
 
-.quantity-input {
-  font-size: 1.5rem;
-  text-align: center;
-  background-color: white;
+.btn-rounded-quantity {
+	width: 50px;
+	height: 50px;
+	color: #faf7f0;
+	background-color: $primary;
+	border-color: #faf7f0;
+	transition: transform 0.3s ease-in-out;
+
+	&:hover {
+		color: #faf7f0;
+		background-color: rgba(36, 89, 73, 1);
+		border-color: rgba(36, 89, 73, 1);
+		transform: scale(1.1);
+	}
 }
 
-.price-amount {
-  background-color: rgb(251, 189, 4);
+.btn-rounded-quantity:focus,
+.btn-rounded-quantity.focus {
+	box-shadow: 0 0 0 0.2rem rgba(36, 89, 73, 1);
+}
+
+.btn-rounded-quantity:disabled,
+.btn-rounded-quantity.disabled {
+	color: #6c757d;
+	background-color: $primary;
+	border-color: $primary;
 }
